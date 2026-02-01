@@ -1,178 +1,66 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>Parcel Sandbox</title>
     <meta charset="UTF-8" />
-    <link href="src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      href="https://fonts.googleapis.com/css2?family=REM:ital,wght@0,100..900;1,100..900&family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap"
       rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
     />
-    <title>Weather</title>
+    <title>Weather App</title>
   </head>
   <body>
-    <h1>Weather App</h1>
     <div class="box">
-      <div class="cities">
-        <form class="row" id="search-form">
-          <div class="col-auto">
-            <label for="inputCity" class="visually-hidden">Enter city</label>
-            <input
-              type="city"
-              class="form-control"
-              id="city-search"
-              placeholder="Enter city here"
-            />
-          </div>
-          <div class="col-search">
-            <button type="submit" class="btn btn-primary mb-3">Search</button>
-          </div>
+      <header>
+        <h1>Weather App</h1>
+        <form type="search" id="search-form">
+          <input
+            type="search"
+            class="search-space"
+            id="city-input"
+            placeholder="Enter a city..."
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="search-button">Search</button>
         </form>
+      </header>
+      <div class="section">
+        <div class="city-weather">
+          <span class="city-sky"
+            ><h2 id="cityEntry">City Name</h2>
+            <h3>⛅</h3></span
+          ><span class="weather-date">
+            <p>Sunday 11:30</p>
+            , Partly Cloudy</span
+          >
+          Humidity: 60% <br />
+          Wind: 5 mph NW
+        </div>
+        <div class="city-temperature">
+          <h4 class="temperature" id="current-temperature">°F</h4>
+          <p2
+            ><a href="#" class="temp-change" id="fahrenheit-temp">°F</a> |
+            <a href="#" class="temp-change" id="celsius-temp">°C</a></p2
+          >
+        </div>
       </div>
-      <div class="stack">
-        <ul>
-          <p>
-            <p1 id="cityEntry">City Name Here</p1> <br />
-            <p2>Sunday 1:45 am </p2><br />
-            Clear <br />
-          </p>
-        </ul>
-        <h2 class="temperature" id="current-temperature">°F</h2>
-        <p3
-          ><a href="#" class="temp-change" id="fahrenheit-temp">°F</a> |
-          <a href="#" class="temp-change" id="celsius-temp">°C</a></p3
+      <footer>
+        This project was coded by
+        <a href="https://github.com/Xcodetta" target="_blank">Dani J.</a> and is
+        available on
+        <a href="https://github.com/Xcodetta/ForecastCenter" target="_blank"
+          >GitHub</a
         >
-        <div class="sky" id="sky">🌕</div>
-        <section>
-          Humidity: 81% <br />
-          Wind: 6 mph NW
-        </section>
-        <script>
-          let now = new Date();
-          let minute = now.getMinutes();
-          let hour = now.getHours();
-          let weekday = [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-          ];
-          console.log(now.getMinutes());
-          console.log(now.getHours());
-          console.log(now.getDay());
-          console.log(weekday);
-
-          let today = weekday[now.getDay()];
-          let current = document.querySelector("p2");
-          current.innerHTML = `${today} ${hour}:${minute}`;
-
-          function showTemp(response) {
-            let temperatureElement = document.querySelector(
-              "#current-temperature",
-            );
-            let temperature = Math.round(response.data.temperature.current);
-            temperatureElement.innerHTML = temperature;
-            let cityElement = document.querySelector("#cityEntry");
-            cityElement.innerHTML = response.data.city;
-
-            console.log(response.data);
-            console.log(temperatureElement);
-            console.log(cityElement);
-          }
-
-          function convertToCel(event) {
-            event.preventDefault();
-            let temperatureElement = document.querySelector(
-              "#current-temperature",
-            );
-            let temperature = temperatureElement.innerHTML;
-            temperatureElement.innerHTML = Math.round(
-              (temperature - 32) * (5 / 9),
-            );
-            console.log(temperature);
-          }
-          function convertToFah(event) {
-            event.preventDefault();
-            let temperatureElement = document.querySelector(
-              "#current-temperature",
-            );
-            let temperature = temperatureElement.innerHTML;
-            temperatureElement.innerHTML = Math.round(
-              (temperature * 9) / 5 + 32,
-            );
-            console.log(temperature);
-          }
-
-          let celTemp = document.querySelector("#celsius-temp");
-          celTemp.addEventListener("click", convertToCel);
-          let fahTemp = document.querySelector("#fahrenheit-temp");
-          fahTemp.addEventListener("click", convertToFah);
-
-          function search(event) {
-            event.preventDefault();
-            let cityElement = document.querySelector("#cityEntry");
-            let citySearch = document.querySelector("#city-search");
-            let city = citySearch.value;
-            cityElement.innerHTML = citySearch.value;
-            let apiKey = "e7b3f4obebt21aeffd4fe6d8a0da7143";
-            let apiUrl =
-              "https://api.shecodes.io/weather/v1/current?query=" +
-              city +
-              "&key=" +
-              apiKey +
-              "&units=imperial";
-
-            console.log(apiUrl);
-            console.log(apiKey);
-            console.log(city);
-            axios.get(apiUrl).then(showTemp);
-            cityElement.innerHTML = city;
-          }
-          let searchForm = document.querySelector("#search-form");
-          searchForm.addEventListener("submit", search);
-
-          function converToNight(event) {
-            event.preventDefault();
-            let skyElement = document.querySelector("#sky");
-            let sky = skyElement.innerHTML;
-            if (hour >= "17") {
-              skyElement.innerHTML = "🌙";
-            } else if (hour > "5") {
-              skyElement.innerHTML = "🌤";
-            }
-            console.log(sky);
-          }
-
-          function handlePosition(position) {
-            let p1 = document.querySelector("p1");
-            p1.innerHTML = console.log(position.coords.latitude);
-            console.log(position.coords.longitude);
-          }
-        </script>
-      </div>
+        and
+        <a href="#" target="_blank">Netlify</a>.
+      </footer>
     </div>
-    <footer>
-      This project was coded by
-      <a href="https://github.com/Xcodetta" class="info" target="_blank">
-        Dani J.</a
-      >
-      and is on
-      <a
-        href="https://github.com/Xcodetta/ForecastCenter"
-        class="info"
-        target="_blank"
-        >GitHub</a
-      >
-      as well as
-      <a href="#" target="_blank">Netlify</a>.
-      <br />
-    </footer>
+    <script src="src/index.js"></script>
   </body>
 </html>
