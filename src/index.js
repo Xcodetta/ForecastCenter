@@ -18,6 +18,9 @@ console.log(weekday);
 let today = weekday[now.getDay()];
 let current = document.querySelector("p");
 current.innerHTML = `${today} ${hour}:${minute}`;
+if (minute < 10) {
+  current.innerHTML = `${today} ${hour}:0${minute}`;
+}
 
 function showTemp(response) {
   let temperatureElement = document.querySelector("#current-temperature");
@@ -25,10 +28,19 @@ function showTemp(response) {
   temperatureElement.innerHTML = temperature;
   let cityElement = document.querySelector("#cityEntry");
   cityElement.innerHTML = response.data.city;
+  let describeElement = document.querySelector("#description");
+  describeElement.innerHTML = response.data.condition.description;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
 
   console.log(response.data);
   console.log(temperatureElement);
   console.log(cityElement);
+  console.log(response.data.condition.description);
+  console.log(response.data.temperature.humidity);
+  console.log(Math.round(response.data.wind.speed));
 }
 function convertToCel(event) {
   event.preventDefault();
