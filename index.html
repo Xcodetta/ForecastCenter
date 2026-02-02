@@ -32,17 +32,19 @@
       </header>
       <div class="section">
         <div class="city-weather">
-          <span class="city-sky"
-            ><h2 id="cityEntry">City Name</h2>
-            <h3>⛅</h3></span
-          ><span class="weather-date">
+          <h2 id="cityEntry">City Name</h2>
+          <span class="weather-date">
             <p>Sunday 11:30</p>
-            , Partly Cloudy</span
-          >
-          Humidity: 60% <br />
-          Wind: 5 mph NW
+            <span id="description"></span
+          ></span>
+          Humidity:
+          <div class="humid" id="humidity"></div>
+          <br />
+          Wind:
+          <div class="humid" id="wind"></div>
         </div>
         <div class="city-temperature">
+          <h3>⛅</h3>
           <h4 class="temperature" id="current-temperature">°F</h4>
           <p2
             ><a href="#" class="temp-change" id="fahrenheit-temp">°F</a> |
