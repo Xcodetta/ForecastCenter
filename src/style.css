@@ -1,22 +1,19 @@
 body {
-  background-color: #57b1e8;
   background: linear-gradient(orange, #57b1e8);
   font-family: "Vend Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  max-height: 100%;
 }
 .box {
-  border: 0px solid black;
+  border: 2px solid rgb(101, 95, 95);
   padding: 5px 20px 20px 20px;
   margin: 60px auto;
   margin-bottom: 27%;
-  max-width: 500px;
-  background-color: rgb(255, 255, 255);
+  max-width: 550px;
+  background-color: rgba(246, 246, 246, 0.5);
   border-radius: 30px;
-  opacity: 0.7;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 6px 20px rgba(0, 0, 0, 0.1);
 }
 header {
   border-bottom: 2px solid #929ea5;
@@ -24,17 +21,18 @@ header {
 }
 .search-space {
   gap: 10px;
-  border: 0px solid black;
+  border: 0px solid rgb(0, 0, 0);
   margin-bottom: 20px;
   margin-right: 10px;
-  width: 380px;
+  width: 430px;
   padding: 10px 10px;
   border-radius: 10px;
   font-size: 20px;
-  background-color: rgb(197, 181, 157);
+  background-color: rgb(91, 88, 85, 0.4);
+  color: white;
 }
 .search-button {
-  background-color: #57b1e8;
+  background-color: #163d69;
   color: white;
   border: none;
   border-radius: 10px;
@@ -43,23 +41,23 @@ header {
   font-size: 20px;
 }
 .search-button:hover {
-  background-color: #f5630e;
+  background-color: #ffffff;
   color: #123f5b;
   transition: all 0.3s ease;
   font-weight: bold;
 }
 h1 {
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 700;
   padding-top: -10px;
 }
 h2 {
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 700;
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
-h3 {
+.weather-picture {
   font-size: 50px;
   margin-top: 10px;
   margin-bottom: 0px;
@@ -75,6 +73,7 @@ p {
 .section {
   display: flex;
   justify-content: space-between;
+  font-size: 18px;
 }
 .city-weather {
   display: block;
@@ -92,7 +91,7 @@ p {
   justify-content: space-between;
 }
 .temperature {
-  font-size: 120px;
+  font-size: 110px;
   font-weight: 700;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -100,15 +99,15 @@ p {
 }
 .temp-change {
   font-size: 20px;
-  color: #57b1e8;
+  color: #163d69;
   text-decoration: none;
   margin-top: 0px;
 }
 .temp-change:hover {
-  color: #f5630e;
+  color: #810606;
 }
 .humid {
-  color: #f5630e;
+  color: #163d69;
   margin: 0px;
   display: inline;
   font-weight: bold;
@@ -126,6 +125,6 @@ a {
   font-weight: bolder;
 }
 a:hover {
-  color: #f5630e;
+  color: #810606;
   transition: all 0.3s ease;
 }
